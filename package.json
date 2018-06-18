@@ -1,7 +1,7 @@
 {
   "name": "auw-t3-basic",
   "version": "0.5.2",
-  "description": "Customer's default auwT3 package. (c) 2017 artundweise GmbH",
+  "description": "auwT3 package. (c) 2017 artundweise GmbH",
   "private": true,
   "root": true,
   "author": "Maximilian Scopp <me@maxscopp.de>",
@@ -9,7 +9,6 @@
     "::==================[ COMMON ]": "#==================",
     "start": "yarn dev:init",
     "postinstall": "typings install",
-    "build-that-shit": "clear && printf 'Alles klar, chef! 💩 🎉 🎉 🎉 \\n\\n\\n' && yarn dev:init",
     "gen:stats": "yarn prod:client -- --profile --display-modules --json > stats.json",
     "::==================[ DEVELOPMENT ]": "#==================",
     "dev:init": "yarn && yarn dev:composer && yarn build:all",
@@ -28,10 +27,6 @@
     "prod:client": "cross-env NODE_ENV=production  webpack --mode=production --config='webpack.config.client.js' --display-modules",
     "prod:composer": "composer install --no-ansi --no-dev --no-interaction --no-progress --optimize-autoloader"
   },
-  "browserslist": [
-    "last 2 versions",
-    "ios >= 8"
-  ],
   "dependencies": {
     "@types/react": "^16.3.14",
     "a11ytab": "^1.1.3",
@@ -39,9 +34,7 @@
     "animate-sass": "^0.8.2",
     "anymatch": "^2.0.0",
     "async": "^2.6.1",
-    "auw-framework": "git+ssh://git@bitbucket.org/artundweise/auw-framework.git#3a7f3e6a3c42e09b976b7a27d898eea7afd3da3d",
     "awesome-sass-easing": "^1.1.2",
-    "background-check": "kennethcachia/background-check",
     "bootstrap-filestyle": "^1.2.1",
     "bootstrap-sass": "^3.3.7",
     "brand-colors": "^2.0.1",
@@ -112,8 +105,6 @@
     "favicons-webpack-plugin": "^0.0.9",
     "file-loader": "^1.1.11",
     "fork-ts-checker-webpack-plugin": "^0.4.2",
-    "friendly-errors-webpack-plugin": "^1.7.0",
-    "handlebars-loader": "unic/handlebars-loader#60c3a9a9e163be747b7551b524a87c091f4ede2c",
     "handlebars-template-loader": "^1.0.0",
     "ignore-loader": "^0.1.2",
     "name-all-modules-plugin": "^1.0.1",

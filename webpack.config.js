@@ -8,7 +8,7 @@ const rootPath = require(path.resolve(__dirname, "auw.config")).rootPath;
 
 module.exports = {
   output: {},
-  context: path.resolve(__dirname),
+  context: path.resolve(__dirname, rootPath),
   mode:
     (process.env.NODE_ENV === "production" && process.env.NODE_ENV) ||
     "development",

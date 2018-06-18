@@ -3,7 +3,7 @@ const path = require("path");
 module.exports.PROD = "production";
 module.exports.DEV = "development";
 
-const rootPath = (module.exports.rootPath = "web/typo3conf/ext/");
+const rootPath = (module.exports.rootPath = "src/");
 const isServer = (module.exports.isServer = "__server-bundle");
 
 //#region Pre-Config
@@ -19,16 +19,13 @@ const Clients = {
 // Check out the `entryPoints` to define entry-points using this Resource const.
 // You may use `[client]` as client placeholder.
 const Resource = {
-  App: name => `Resources/Private/App/${name}`,
-  Style: name => `Resources/Private/Styles/${name}`
+  App: name => name
 };
 
 // Add here your target groups.
 // Check out `Output` const for further information
 const Groups = {
-  App: "app",
-  Print: "print",
-  Rte: "rte"
+  App: "app"
 };
 
 //#endregion
@@ -43,24 +40,7 @@ module.exports = ((Output, defineEntry, _extends) => {
   const entryPoints = {
     client: {
       [Output.Default(Groups.App)]: [
-        defineEntry("auw_config", Resource.App("bootstrap.js"), Clients.Default)
-      ]
-    },
-    styles: {
-      [Output.Default(Groups.Print)]: [
-        defineEntry("auw_config", Resource.Style("rte.scss"), Clients.Default)
-      ],
-      [Output.Default(Groups.Rte)]: [
-        defineEntry("auw_config", Resource.Style("print.scss"), Clients.Default)
-      ]
-    },
-    server: {
-      [Output.Default(Groups.App + isServer)]: [
-        defineEntry(
-          "auw_config",
-          Resource.App("bootstrap-server.js"),
-          Clients.Default
-        )
+        defineEntry(".", Resource.App("index.jsx"), Clients.Default)
       ]
     }
   };
@@ -70,30 +50,10 @@ module.exports = ((Output, defineEntry, _extends) => {
       // Folder in which to work on.
       rootPath: rootPath,
 
-      publicPath: "/typo3conf/ext/auw_config/Resources/Public/",
+      publicPath: "/",
 
       // Compile-To Path for the **Browser**
-      outputPath: path.resolve(
-        __dirname,
-        rootPath,
-        "auw_config/Resources/Public"
-      ),
-
-      // Compile-To Path for the **Server**
-      outputServerPath: path.resolve(
-        __dirname,
-        rootPath,
-        "auw_config/Resources/_ServerCompiled"
-      ),
-
-      // Relative to `outputPath`, where should I place my Stats?
-      entryStats: "../"
-
-      // Default Icon for T3 instance. Be cautious, single-client use only.
-      // Implement that loop ya self, yo!
-      //TODO: Waiting for package migration of webpack 4
-      /*appIcon: "./auw_config/Resources/Private/app-icon.png",
-      appName: Object.values(Clients).filter(v => !!v)[0]*/
+      outputPath: path.resolve(__dirname, "dist/")
     },
     {
       entryPoints

@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "lib": ["es2015", "es2016", "es2017", "esnext", "dom"],
+    "jsx": "react",
+    "baseUrl": "./web",
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "target": "es5",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "transpileOnly": true,
+    "allowJs": false,
+    "emitDecoratorMetadata": true,
+
+    "inlineSources": true,
+    "sourceMap": true,
+    "moduleResolution": "node"
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    "useCache": true,
+    "useTranspileModule": true,
+    "forceIsolatedModules": true,
+    "babelCore": "@babel/core" // needed for Babel v7
+  },
+  "exclude": [
+    "typings/browser.d.ts",
+    "typings/browser",
+    "node_modules",
+    "vendor", // ignore composer stuff
+    "typo3_src",
+    "web/typo3",
+    "sysext/**/*",
+    "**/Configuration/**/*.ts",
+    "**/TypoScript/**/*.ts",
+    "typo3conf/ext/*/Configuration",
+    "**/TsConfig/**"
+  ]
+}
